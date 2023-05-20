@@ -55,13 +55,39 @@ class Visitante(models.Model):
         blank=True
     )
 
-    registrao_por = models.ForeignKey(
+    registrado_por = models.ForeignKey(
 
         "porteiros.Porteiro",
         verbose_name="Porteiro responsável pelo registro",
         on_delete=models.PROTECT
     )
 
+    def get_horario_saida(self):
+        if self.horario_saida:
+            return self.horario_saida
+        
+        return "Horario de saída não registrado"
+    
+    def get_horario_autorizacao(self):
+        if self.horario_autorizacao:
+            return self.horario_autorizacao
+        
+        return "Horario de autorização não registrado"
+    
+    def get_morador_responsavel(self):
+        if self.morador_responsavel:
+            return self.morador_responsavel
+        
+        return "Morador responsável não registrado"
+    
+    def get_placa_veiculo(self):
+        if self.placa_veiculo:
+            return self.placa_veiculo
+        
+        return "Placa do veículo não registrado"
+    
+    
+    
     class Meta:
         verbose_name="Visitante",
         verbose_name_plural="Visitantes",
