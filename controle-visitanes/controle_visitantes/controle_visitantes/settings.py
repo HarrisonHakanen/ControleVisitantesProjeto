@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
+import sys
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -27,6 +28,10 @@ SECRET_KEY = 'django-insecure-e=hbg)sv#c_wec%9wl*s*5_r(c8)fodken&p!#jpbt5my=-+lh
 DEBUG = True
 
 ALLOWED_HOSTS = []
+
+sys.path.append(
+    os.path.join(BASE_DIR,"apps")
+)
 
 
 # Application definition
@@ -47,7 +52,8 @@ INSTALLED_APPS +=[
 INSTALLED_APPS += [
     "usuarios",
     "porteiros",
-    "visitantes"
+    "visitantes",
+    "dashboard"
 ]
 
 MIDDLEWARE = [
